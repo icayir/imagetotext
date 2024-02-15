@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <title>Upload an Image</title>
+  <style>
+    body {
+      padding-top: 100px;
+    }
+    .file-input {
+      display: none;
+    }
+    .file-label {
+      padding: .375rem .75rem;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      document.getElementById('file').onchange = function() {
+        document.getElementById('form').submit();
+      };
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <h1 class="text-center my-4">Image to Text</h1>
+        <form id="form" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="file" class="btn btn-primary btn-lg btn-block file-label">Choose File</label>
+            <input id="file" type="file" name="file" class="file-input">
+          </div>
+        </form>
+        {% if result %}
+        <h2 class="text-center my-4">Result:</h2>
+        <p>{{ result }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
